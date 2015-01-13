@@ -1,20 +1,18 @@
 var net=require('net');
 
-function getConn(c){
-	console.log('服务器已经连接');
+var server=net.createServer(function(c){
+	console.log('client connected');
 	c.on('end',function(){
-		console.log('服务器已经断开');
+		console.log('client disconnected');
 	});
 	c.on('data',function(data){
-		console.log("收到客户端信息："+data.toString());
+		console.log('rec:'+data.toString());
 	});
-
-	c.write('你好，这是服务器消息');
+	c.write('hello\r\n');
 	c.pipe(c);
-}
-
-var server=net.createServer(getConn).listen(8888,function(){
-	console.log('服务器已经绑定');
 });
 
+server.listen(8888,function(){
+	console.log('server bound');
+});
 
