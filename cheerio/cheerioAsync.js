@@ -6,7 +6,7 @@ var url=require('url');
 var http=require('http');
 var async=require('async'); 
 
-var weburl='http://www.456bbmm.com/html/article/index12172.html';
+var weburl='http://www.tt.com/html/article/index12172.html';
 var DOWNLOAD_DIR='/home/wang/pic/';
 var aa=new Array();
 
@@ -14,7 +14,7 @@ function getDatas(){
 	async.parallel({
 		one:function(cb){
 	for(var i=70;i<80;i++){
-		weburl='http://www.456bbmm.com/html/article/index121'+i+'.html'
+		weburl='http://www.tt.com/html/article/index121'+i+'.html'
 	request(weburl,function(error,res,body){
 		if(!error && res.statusCode == 200){
 			var $=cheerio.load(body);
